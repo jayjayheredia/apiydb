@@ -100,7 +100,7 @@ const Edit = () => {
                 <label className="block text-sm font-bold text-slate-500 mb-1 ml-1 uppercase">Nacimiento</label>
                 <input
                   className="w-full border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition-colors font-medium text-slate-700"
-                  type="text"
+                  type="date"
                   value={fecha}
                   onChange={(e) => setFecha(e.target.value)}
                 />

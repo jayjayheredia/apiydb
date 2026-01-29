@@ -79,7 +79,7 @@ const Create = () => {
               <label className="block text-sm font-bold text-slate-700 mb-2 ml-1">Fecha de Nacimiento</label>
               <input
                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all"
-                type="text"
+                type="date"
                 placeholder="DD/MM/AAAA"
                 value={fecha}
                 onChange={(e) => setFecha(e.target.value)}
