@@ -10,22 +10,29 @@ const Avocado = () => {
     const imgURL = `https://platzi-avo.vercel.app`
 
   return (
-    <>
-      <Header/>
-     <h3 className='font-extrabold text-4xl text-center p-4'>Avocado</h3>
-     <div  className='grid grid-cols-3 p-5 place-items-center'>
-        {loading && <li className='list-none m-6 text-2xl bg-gray-500 mb-4 ml-4 p-2 text-cyan-300 text-center rounded-xl'>Loading...</li>}
-        {data?.data.map((user) => (<li className=' list-none w-3/4 h-1/8 bg-gray-500 mb-4 ml-4 p-2 text-cyan-300 text-center rounded-xl'  key={user.id}>
-          Name: {user.name} <br />
-          <img className='w-3/5 h-2/5 place-items-center m-auto text-cyan-300 rounded-xl mt-4' src={imgURL+user.image} alt="Image Not Found" /><br />
-          Price: ${user.price} <br />
-          Attributes: {user.attributes.description} <br />
-          Hardiness: {user.attributes.hardiness} <br />
-          Shape: {user.attributes.shape} <br />
-          Taste: {user.attributes.taste}
-         </li>))}
-      </div>
-    </>
+    <div className="min-h-screen bg-gray-50">
+          <Header />
+          <h3 className="font-extrabold text-4xl text-center text-slate-800 p-8">Avocado Menu</h3>
+          
+          {loading && <div className="text-center py-10 text-xl font-medium animate-pulse">Cargando delicias...</div>}
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 max-w-7xl mx-auto">
+            {data?.data.map((item) => (
+              <div key={item.id} className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-slate-100">
+                <img className="w-full h-64 object-cover" src={imgURL + item.image} alt={item.name} />
+                <div className="p-6">
+                  <h4 className="text-2xl font-bold text-slate-800 mb-2">{item.name}</h4>
+                  <p className="text-emerald-600 font-bold text-xl mb-4">${item.price}</p>
+                  <div className="text-slate-600 text-sm space-y-1 italic">
+                    <p><strong>Taste:</strong> {item.attributes.taste}</p>
+                    <p><strong>Shape:</strong> {item.attributes.shape}</p>
+                  </div>
+                  <p className="mt-4 text-slate-500 text-sm line-clamp-3">{item.attributes.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
   )
 }
 

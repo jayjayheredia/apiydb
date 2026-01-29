@@ -7,15 +7,24 @@ const Chuck = () => {
 
     const {data, loading} = useFetch("https://api.chucknorris.io/jokes/random")
 
-  return (
-    <>
-        <Header/>
-        <h3 className='font-extrabold text-4xl text-center p-4'>Random Chuck Norris Joke</h3>
-        {loading && <li className='list-none m-6 text-2xl bg-gray-500 mb-4 ml-4 p-2 text-cyan-300 text-center rounded-xl'>Loading...</li>}
-        {data && <li className='list-none m-6 text-2xl bg-gray-500 mb-4 ml-4 p-2 text-cyan-300 text-center rounded-xl' >{data.value}</li>}
-      
-    </>
-  )
-}
+return (
+    <div className="min-h-screen bg-slate-900 text-white">
+      <Header />
+      <div className="flex flex-col items-center justify-center mt-20 p-6">
+        <h3 className="text-amber-400 font-black text-5xl mb-10 tracking-tighter italic">CHUCK FACTS</h3>
+        {loading ? (
+           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-amber-400"></div>
+        ) : (
+          <div className="max-w-2xl bg-slate-800 p-10 rounded-3xl border-l-8 border-amber-400 shadow-2xl">
+            <p className="text-2xl leading-relaxed font-medium">"{data?.value}"</p>
+          </div>
+        )}
+        <button onClick={() => window.location.reload()} className="mt-10 bg-amber-500 hover:bg-amber-600 px-8 py-3 rounded-full font-bold transition-all">
+          Another one!
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default Chuck

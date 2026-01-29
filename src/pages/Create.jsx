@@ -5,79 +5,97 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Header from '../utils/Header'
-const mySwal = withReactContent (Swal)
+const mySwal = withReactContent(Swal)
 
 const Create = () => {
-
   const [ciudad, setCiudad] = useState('')
-  const [nombre, setNombre] =useState('')
+  const [nombre, setNombre] = useState('')
   const [apellido, setApellido] = useState('')
   const [fecha, setFecha] = useState('')
   const navigate = useNavigate()
 
   const futbolistasCollection = collection(db, "Futbolistas")
 
-
-
-  const guardar = async (e) =>{
+  const guardar = async (e) => {
     e.preventDefault()
-    if(nombre == '' || apellido == '' || ciudad == '' || fecha == ''){
+    if (nombre === '' || apellido === '' || ciudad === '' || fecha === '') {
       mySwal.fire({
-        title: "Hubo un error",
-        text: "Todos los campos tienen que estar completados",
-        icon: "error"
+        title: "Campos incompletos",
+        text: "Por favor, completa todos los datos del futbolista",
+        icon: "warning",
+        confirmButtonColor: "#4F46E5"
       });
-    }else{
-      await addDoc(futbolistasCollection, {Ciudad: ciudad, Nombre: nombre, Apellido: apellido, Fecha: fecha})
+    } else {
+      await addDoc(futbolistasCollection, { Ciudad: ciudad, Nombre: nombre, Apellido: apellido, Fecha: fecha })
       navigate("/payfb/database")
     }
-
   }
 
   return (
-    <>
-      <Header/>
-      <h2 className='font-extrabold text-4xl text-center p-4'>Crear</h2>
+    <div className="min-h-screen bg-slate-50">
+      <Header />
+      <div className="max-w-xl mx-auto mt-12 p-4">
+        <div className="bg-white shadow-2xl rounded-3xl p-8 border border-slate-100">
+          <h2 className="font-black text-3xl text-slate-800 text-center mb-8 uppercase tracking-wider">
+            Nuevo Jugador
+          </h2>
 
-      <form className='mt-5' onSubmit={guardar}>
-          <div className='mb-3 text-center'>
-            <label className='text-xl font-bold'>Nombre</label>
-            <input className='ml-3 text-xl' type="text"
-              value={nombre}
-              onChange={(e) => {setNombre(e.target.value)}}
-            />
-          </div>
-          <div className='mb-3 text-center'>
-            <label className='text-xl font-bold'>Apellido</label>
-            <input className='ml-3 text-xl' type="text"
-              value={apellido}
-              onChange={(e) => {setApellido(e.target.value)}}
-            />
-          </div>
-          <div className='mb-3 text-center'>
-            <label className='text-xl font-bold'>Ciudad de Nacimiento</label>
-            <input className='ml-3 text-xl' type="text"
-              value={ciudad}
-              onChange={(e) => {setCiudad(e.target.value)}}
-            />
-          </div>
-          <div className='mb-3 text-center'>
-            <label className='text-xl font-bold'>Fecha de Nacimiento</label>
-            <input className='ml-3 text-xl' type="text"
-              value={fecha}
-              onChange={(e) => {setFecha(e.target.value)}}
-            />
-          </div>
+          <form onSubmit={guardar} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-bold text-slate-700 mb-2 ml-1">Nombre</label>
+                <input
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all"
+                  type="text"
+                  placeholder="Ej: Lionel"
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-slate-700 mb-2 ml-1">Apellido</label>
+                <input
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all"
+                  type="text"
+                  placeholder="Ej: Messi"
+                  value={apellido}
+                  onChange={(e) => setApellido(e.target.value)}
+                />
+              </div>
+            </div>
 
-          <div className='text-center'>
-          <button className='text-2xl font-bold mt-8 border border-black rounded-md p-3 hover:bg-slate-400' type='submit'>Guardar</button>
-          </div>
-      </form>
-      
+            <div>
+              <label className="block text-sm font-bold text-slate-700 mb-2 ml-1">Ciudad de Nacimiento</label>
+              <input
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all"
+                type="text"
+                placeholder="Ej: Rosario"
+                value={ciudad}
+                onChange={(e) => setCiudad(e.target.value)}
+              />
+            </div>
 
-      
-      
-    </>
+            <div>
+              <label className="block text-sm font-bold text-slate-700 mb-2 ml-1">Fecha de Nacimiento</label>
+              <input
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all"
+                type="text"
+                placeholder="DD/MM/AAAA"
+                value={fecha}
+                onChange={(e) => setFecha(e.target.value)}
+              />
+            </div>
+
+            <button
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-indigo-200 transition-all active:scale-95 mt-4"
+              type="submit"
+            >
+              Registrar Futbolista
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   )
 }
 
