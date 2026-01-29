@@ -16,13 +16,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <BrowserRouter>
         
         <Routes>
-          <Route path="/payfb" element={<Home/>} />
-          <Route path="/payfb/avocado" element={<Avocado/>} />
-          <Route path="/payfb/chuck" element={<Chuck/>}/>
-          <Route path="/payfb/hp" element={<HP/>} />
-          <Route path="/payfb/database" element={<Database/>}/>
-          <Route path="/payfb/database/edit/:id" element={<Edit/>}/>
-          <Route path="/payfb/create" element={<Create/>}/>
+          <Route path="/apiydb" element={<Home/>} />
+          <Route path="/apiydb/avocado" element={<Avocado/>} />
+          <Route path="/apiydb/chuck" element={<Chuck/>}/>
+          <Route path="/apiydb/hp" element={<HP/>} />
+          <Route path="/apiydb/database" element={<Database/>}/>
+          <Route path="/apiydb/database/edit/:id" element={<Edit/>}/>
+          <Route path="/apiydb/create" element={<Create/>}/>
         </Routes>
         
         

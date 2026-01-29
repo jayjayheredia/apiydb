@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   const menus = [
-    { to: "/payfb/hp", label: "Harry Potter", icon: "⚡", color: "hover:border-purple-500" },
-    { to: "/payfb/chuck", label: "Chuck Jokes", icon: "🤠", color: "hover:border-orange-500" },
-    { to: "/payfb/avocado", label: "Avocado Store", icon: "🥑", color: "hover:border-green-500" },
-    { to: "/payfb/database", label: "Firebase DB", icon: "⚽", color: "hover:border-blue-500" },
+    { to: "/apiydb/hp", label: "Harry Potter", icon: "⚡", color: "hover:border-purple-500" },
+    { to: "/apiydb/chuck", label: "Chuck Jokes", icon: "🤠", color: "hover:border-orange-500" },
+    { to: "/apiydb/avocado", label: "Avocado Store", icon: "🥑", color: "hover:border-green-500" },
+    { to: "/apiydb/database", label: "Firebase DB", icon: "⚽", color: "hover:border-blue-500" },
   ];
 
   return (

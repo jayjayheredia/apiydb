@@ -27,7 +27,7 @@ const Create = () => {
       });
     } else {
       await addDoc(futbolistasCollection, { Ciudad: ciudad, Nombre: nombre, Apellido: apellido, Fecha: fecha })
-      navigate("/payfb/database")
+      navigate("/apiydb/database")
     }
   }
 

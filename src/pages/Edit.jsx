@@ -35,7 +35,7 @@ const Edit = () => {
         timer: 1500,
         showConfirmButton: false
       })
-      navigate('/payfb/database')
+      navigate('/apiydb/database')
     }
   }
 
@@ -109,7 +109,7 @@ const Edit = () => {
 
             <div className="flex gap-4 mt-8">
               <button
-                onClick={() => navigate('/payfb/database')}
+                onClick={() => navigate('/apiydb/database')}
                 type="button"
                 className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-4 rounded-2xl transition-all"
               >
