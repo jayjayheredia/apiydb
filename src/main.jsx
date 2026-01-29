@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import { HashRouter, Route, Routes, Navigate } from "react-router-dom"
 import Chuck from "./pages/Chuck"
 import Avocado from "./pages/Avocado"
 import HP from "./pages/HP"
@@ -11,23 +11,21 @@ import Edit from "./pages/Edit"
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  
-      <>
-        <BrowserRouter>
+  <React.StrictMode>
+    <HashRouter>
+      <Routes>
+        {/* La raíz es simplemente "/" */}
+        <Route path="/" element={<Home />} />
+        <Route path="/avocado" element={<Avocado />} />
+        <Route path="/chuck" element={<Chuck />} />
+        <Route path="/hp" element={<HP />} />
+        <Route path="/database" element={<Database />} />
+        <Route path="/database/edit/:id" element={<Edit />} />
+        <Route path="/create" element={<Create />} />
         
-        <Routes>
-          <Route path="/apiydb" element={<Home/>} />
-          <Route path="/apiydb/avocado" element={<Avocado/>} />
-          <Route path="/apiydb/chuck" element={<Chuck/>}/>
-          <Route path="/apiydb/hp" element={<HP/>} />
-          <Route path="/apiydb/database" element={<Database/>}/>
-          <Route path="/apiydb/database/edit/:id" element={<Edit/>}/>
-          <Route path="/apiydb/create" element={<Create/>}/>
-        </Routes>
-        
-        
-        
-        </BrowserRouter>
-      </>
-
+        {/* Por si alguien entra a una ruta vieja o inexistente, lo mandas al Home */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </HashRouter>
+  </React.StrictMode>
 )

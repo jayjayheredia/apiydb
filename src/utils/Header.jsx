@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Header = () => {
   return (
     
-    <Link to="/apiydb">
+    <Link to="/">
         <h1 className='font-extrabold text-6xl text-center p-4'>Home</h1>
     </Link>
     
